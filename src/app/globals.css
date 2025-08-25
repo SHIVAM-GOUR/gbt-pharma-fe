@@ -1,26 +1,225 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@300;400;500;600;700;800&display=swap');
 @import "tailwindcss";
 
 :root {
+  /* Medical/Pharmaceutical Color Palette */
+  --primary: #1e40af; /* Medical Blue */
+  --primary-foreground: #ffffff;
+  --secondary: #059669; /* Medical Green */
+  --secondary-foreground: #ffffff;
+  --accent: #ea580c; /* Olwen Orange Brand Color */
+  --accent-foreground: #ffffff;
+
+  /* Neutral Colors */
   --background: #ffffff;
-  --foreground: #171717;
+  --foreground: #1f2937; /* Dark Gray */
+  --muted: #f8fafc; /* Light Blue Gray */
+  --muted-foreground: #64748b; /* Slate Gray */
+  --card: #ffffff;
+  --card-foreground: #1f2937;
+  --border: #e2e8f0; /* Light Border */
+  --input: #f1f5f9;
+
+  /* Status Colors for Medical Context */
+  --success: #10b981; /* Green for safe/approved */
+  --success-foreground: #ffffff;
+  --warning: #f59e0b; /* Amber for caution */
+  --warning-foreground: #ffffff;
+  --destructive: #ef4444; /* Red for danger/contraindications */
+  --destructive-foreground: #ffffff;
+  --info: #3b82f6; /* Blue for information */
+  --info-foreground: #ffffff;
+
+  /* Medical Trust Colors */
+  --trust-blue: #1e40af;
+  --safety-green: #059669;
+  --brand-orange: #ea580c;
+  --clinical-gray: #6b7280;
+
+  /* Radius */
+  --radius: 0.5rem;
 }
 
 @theme inline {
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-success: var(--success);
+  --color-success-foreground: var(--success-foreground);
+  --color-warning: var(--warning);
+  --color-warning-foreground: var(--warning-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-info: var(--info);
+  --color-info-foreground: var(--info-foreground);
+  --font-sans: 'Inter', system-ui, sans-serif;
+  --font-heading: 'Poppins', system-ui, sans-serif;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+* {
+  border-color: var(--border);
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans);
+  line-height: 1.6;
+  font-feature-settings: "rlig" 1, "calt" 1;
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--muted);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--muted-foreground);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--foreground);
+}
+
+/* Medical-themed animations */
+.animate-fade-in {
+  animation: fadeIn 0.6s ease-in-out;
+}
+
+.animate-slide-up {
+  animation: slideUp 0.6s ease-out;
+}
+
+.animate-slide-in-left {
+  animation: slideInLeft 0.6s ease-out;
+}
+
+.animate-slide-in-right {
+  animation: slideInRight 0.6s ease-out;
+}
+
+.animate-pulse-medical {
+  animation: pulseMedical 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes pulseMedical {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: .7;
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+/* Medical form styles */
+.medical-form-input {
+  @apply w-full px-4 py-3 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-colors;
+}
+
+.medical-form-label {
+  @apply block text-sm font-medium text-foreground mb-2;
+}
+
+/* Trust indicators */
+.trust-badge {
+  @apply inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-success/10 text-success border border-success/20;
+}
+
+.safety-badge {
+  @apply inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-primary/10 text-primary border border-primary/20;
+}
+
+/* Medical card styles */
+.medical-card {
+  @apply bg-card border border-border rounded-lg shadow-sm hover:shadow-md transition-shadow;
+}
+
+.medical-card-header {
+  @apply p-6 border-b border-border;
+}
+
+.medical-card-content {
+  @apply p-6;
+}
+
+/* Prescription-style text */
+.prescription-text {
+  font-family: 'Courier New', monospace;
+  @apply text-sm text-muted-foreground;
 }
