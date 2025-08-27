@@ -22,6 +22,39 @@ import { AddProductDialog } from "@/components/dialogs/add-product-dialog"
 import { EditProductDialog } from "@/components/dialogs/edit-product-dialog"
 import { ProductDetailDialog } from "@/components/dialogs/product-detail-dialog"
 import { DeleteConfirmationDialog } from "@/components/dialogs/delete-confirmation-dialog"
+
+interface Product {
+  id: number
+  name: string
+  category: string
+  manufacturer: string
+  price: number
+  stock: number
+  threshold: number
+  status: string
+  prescriptionRequired: boolean
+  sku: string
+  description: string
+  dosage?: string
+  form?: string
+  strength?: string
+}
+
+interface NewProduct {
+  name: string
+  category: string
+  manufacturer: string
+  price: number
+  stock: number
+  threshold: number
+  status: string
+  prescriptionRequired: boolean
+  sku: string
+  description: string
+  dosage: string
+  form: string
+  strength: string
+}
 import { formatPrice } from "@/lib/utils"
 
 // Mock data - in real app this would come from API
@@ -112,7 +145,7 @@ export default function ProductsPage() {
   const [showEditDialog, setShowEditDialog] = useState(false)
   const [showDetailDialog, setShowDetailDialog] = useState(false)
   const [showDeleteDialog, setShowDeleteDialog] = useState(false)
-  const [selectedProduct, setSelectedProduct] = useState<any>(null)
+  const [selectedProduct, setSelectedProduct] = useState<Product | null>(null)
   const [isDeleting, setIsDeleting] = useState(false)
 
   const filteredProducts = products.filter(product => {
@@ -128,28 +161,28 @@ export default function ProductsPage() {
   })
 
   // Dialog handlers
-  const handleViewProduct = (product: any) => {
+  const handleViewProduct = (product: Product) => {
     setSelectedProduct(product)
     setShowDetailDialog(true)
   }
 
-  const handleEditProduct = (product: any) => {
+  const handleEditProduct = (product: Product) => {
     setSelectedProduct(product)
     setShowEditDialog(true)
   }
 
-  const handleDeleteProduct = (product: any) => {
+  const handleDeleteProduct = (product: Product) => {
     setSelectedProduct(product)
     setShowDeleteDialog(true)
   }
 
-  const handleAddProduct = (productData: any) => {
+  const handleAddProduct = (productData: NewProduct) => {
     // In real app, this would call an API
     console.log("Adding product:", productData)
     // Add to products array or refresh from API
   }
 
-  const handleSaveProduct = (productData: any) => {
+  const handleSaveProduct = (productData: Product) => {
     // In real app, this would call an API
     console.log("Saving product:", productData)
     // Update products array or refresh from API

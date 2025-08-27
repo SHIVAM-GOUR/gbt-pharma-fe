@@ -18,7 +18,7 @@ const values = [
   {
     icon: Heart,
     title: "Patient-Centric Care",
-    description: "Every decision we make is guided by what's best for our patients' health and well-being.",
+    description: "Every decision we make is guided by what&apos;s best for our patients&apos; health and well-being.",
     color: "text-red-600"
   },
   {
@@ -112,7 +112,7 @@ export default function AboutPage() {
               About <span className="text-primary">Olwen Lifesciences</span>
             </h1>
             <p className="text-xl md:text-2xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
-              Your trusted partner in healthcare for over 15 years. We're committed to providing 
+              Your trusted partner in healthcare for over 15 years. We&apos;re committed to providing
               quality medicines, expert guidance, and exceptional service to improve lives worldwide.
             </p>
           </motion.div>
@@ -184,7 +184,7 @@ export default function AboutPage() {
                 </div>
                 <h3 className="text-2xl font-bold text-gray-900 mb-4 font-heading">Our Vision</h3>
                 <p className="text-gray-600 leading-relaxed">
-                  To become the world's most trusted online pharmacy, revolutionizing healthcare 
+                  To become the world&apos;s most trusted online pharmacy, revolutionizing healthcare
                   delivery through innovation, technology, and unwavering commitment to patient care.
                 </p>
               </CardContent>
@@ -279,7 +279,7 @@ export default function AboutPage() {
               Our Journey
             </h2>
             <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-              From a small startup to a trusted healthcare partner - here's how we've grown
+              From a small startup to a trusted healthcare partner - here&apos;s how we&apos;ve grown
             </p>
           </motion.div>
         </div>

@@ -271,7 +271,7 @@ export default function RegisterPage() {
                         </div>
                       ) : (
                         <div className="text-red-600 text-sm">
-                          Passwords don't match
+                          Passwords don&apos;t match
                         </div>
                       )}
                     </div>

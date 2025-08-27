@@ -11,7 +11,8 @@ import { Badge } from "@/components/ui/badge"
 import { ProductCard } from "@/components/products/product-card"
 import { ProductFilters } from "@/components/products/product-filters"
 import { useAppDispatch, useAppSelector } from "@/store"
-import { fetchProducts, setFilters } from "@/store/slices/productsSlice"
+import { fetchProducts, setFilters, setPagination } from "@/store/slices/productsSlice"
+import { ProductFilters as ProductFiltersType } from "@/lib/types"
 
 export default function ProductsPage() {
   const dispatch = useAppDispatch()
@@ -29,7 +30,7 @@ export default function ProductsPage() {
     dispatch(setFilters({ search: query }))
   }
 
-  const handleFilterChange = (newFilters: any) => {
+  const handleFilterChange = (newFilters: Partial<ProductFiltersType>) => {
     dispatch(setFilters(newFilters))
   }
 
@@ -128,7 +129,10 @@ export default function ProductsPage() {
                           className="px-3 py-2 border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-primary"
                           onChange={(e) => {
                             const [sortBy, sortOrder] = e.target.value.split('-')
-                            dispatch(setFilters({ sortBy, sortOrder }))
+                            dispatch(setFilters({
+                              sortBy: sortBy as ProductFiltersType['sortBy'],
+                              sortOrder: sortOrder as ProductFiltersType['sortOrder']
+                            }))
                           }}
                         >
                           <option value="name-asc">Name A-Z</option>
@@ -253,7 +257,7 @@ export default function ProductsPage() {
                     <Button
                       variant="outline"
                       disabled={pagination.page === 1}
-                      onClick={() => dispatch(setFilters({ page: pagination.page - 1 }))}
+                      onClick={() => dispatch(setPagination({ page: pagination.page - 1 }))}
                     >
                       Previous
                     </Button>
@@ -262,7 +266,7 @@ export default function ProductsPage() {
                       <Button
                         key={i + 1}
                         variant={pagination.page === i + 1 ? 'default' : 'outline'}
-                        onClick={() => dispatch(setFilters({ page: i + 1 }))}
+                        onClick={() => dispatch(setPagination({ page: i + 1 }))}
                         className="w-10 h-10 p-0"
                       >
                         {i + 1}
@@ -272,7 +276,7 @@ export default function ProductsPage() {
                     <Button
                       variant="outline"
                       disabled={pagination.page === pagination.totalPages}
-                      onClick={() => dispatch(setFilters({ page: pagination.page + 1 }))}
+                      onClick={() => dispatch(setPagination({ page: pagination.page + 1 }))}
                     >
                       Next
                     </Button>

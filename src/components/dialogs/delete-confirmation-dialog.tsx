@@ -187,7 +187,7 @@ export function DeleteConfirmationDialog({
             {showAdvancedConfirmation && (
               <div className="space-y-3">
                 <p className="text-sm text-gray-600">
-                  To confirm deletion, please type <strong>"delete"</strong> in the field below:
+                  To confirm deletion, please type <strong>&quot;delete&quot;</strong> in the field below:
                 </p>
                 <Input
                   value={confirmationText}
@@ -203,7 +203,7 @@ export function DeleteConfirmationDialog({
                 />
                 {confirmationText && !isConfirmationValid && (
                   <p className="text-sm text-red-600">
-                    Please type "delete" exactly as shown to confirm.
+                    Please type &quot;delete&quot; exactly as shown to confirm.
                   </p>
                 )}
                 {isConfirmationValid && (
@@ -254,7 +254,7 @@ export function DeleteConfirmationDialog({
           
           {!showAdvancedConfirmation && (
             <p className="text-xs text-gray-500 text-center">
-              Click "I understand the risks" to proceed with deletion
+              Click &quot;I understand the risks&quot; to proceed with deletion
             </p>
           )}
         </DialogFooter>

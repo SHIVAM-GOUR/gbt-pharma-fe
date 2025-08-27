@@ -63,7 +63,7 @@ export function ProductFilters({ onFilterChange }: ProductFiltersProps) {
     }))
   }
 
-  const handleFilterChange = (key: keyof ProductFiltersType, value: any) => {
+  const handleFilterChange = (key: keyof ProductFiltersType, value: string | number | boolean | number[] | string[] | undefined) => {
     const newFilters = { ...selectedFilters, [key]: value }
     setSelectedFilters(newFilters)
     onFilterChange(newFilters)

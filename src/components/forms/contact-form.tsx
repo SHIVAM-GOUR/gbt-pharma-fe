@@ -131,11 +131,11 @@ export function ContactForm() {
         </div>
         <h3 className="text-2xl font-bold text-gray-900 mb-4">Message Sent Successfully!</h3>
         <p className="text-gray-600 mb-6">
-          Thank you for contacting us. We've received your inquiry and will respond within 24 hours.
+          Thank you for contacting us. We&apos;ve received your inquiry and will respond within 24 hours.
         </p>
         <div className="bg-green-50 border border-green-200 rounded-lg p-4 max-w-md mx-auto">
           <p className="text-sm text-green-800">
-            <strong>What's next?</strong><br />
+            <strong>What&apos;s next?</strong><br />
             Our support team will review your inquiry and contact you via email or phone based on your preference.
           </p>
         </div>

@@ -160,7 +160,7 @@ export default function ContactPage() {
               Get in <span className="text-primary">Touch</span>
             </h1>
             <p className="text-xl md:text-2xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
-              We're here to help with all your healthcare needs. Reach out to our expert team 
+              We&apos;re here to help with all your healthcare needs. Reach out to our expert team
               for support, questions, or guidance.
             </p>
           </motion.div>

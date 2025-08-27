@@ -447,6 +447,9 @@ const productsSlice = createSlice({
         sortOrder: 'asc'
       }
     },
+    setPagination: (state, action: PayloadAction<{ page: number }>) => {
+      state.pagination.page = action.payload.page
+    },
     clearCurrentProduct: (state) => {
       state.currentProduct = null
     },
@@ -501,5 +504,5 @@ const productsSlice = createSlice({
   }
 })
 
-export const { setFilters, clearFilters, clearCurrentProduct, clearError } = productsSlice.actions
+export const { setFilters, setPagination, clearFilters, clearCurrentProduct, clearError } = productsSlice.actions
 export default productsSlice.reducer

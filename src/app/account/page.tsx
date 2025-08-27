@@ -1,6 +1,7 @@
 "use client"
 
 import { useEffect, useState } from "react"
+import Link from "next/link"
 import { motion } from "framer-motion"
 import { 
   User, 
@@ -232,7 +233,7 @@ export default function AccountPage() {
                             <Package className="w-12 h-12 text-gray-400 mx-auto mb-4" />
                             <p className="text-gray-600">No orders yet</p>
                             <Button className="mt-4" asChild>
-                              <a href="/products">Start Shopping</a>
+                              <Link href="/products">Start Shopping</Link>
                             </Button>
                           </div>
                         )}
@@ -297,7 +298,7 @@ export default function AccountPage() {
                           <h3 className="text-lg font-semibold text-gray-900 mb-2">No orders yet</h3>
                           <p className="text-gray-600 mb-6">Start shopping to see your orders here</p>
                           <Button asChild>
-                            <a href="/products">Browse Products</a>
+                            <Link href="/products">Browse Products</Link>
                           </Button>
                         </div>
                       )}
@@ -316,7 +317,7 @@ export default function AccountPage() {
                         <h3 className="text-lg font-semibold text-gray-900 mb-2">Your wishlist is empty</h3>
                         <p className="text-gray-600 mb-6">Save items you love for later</p>
                         <Button asChild>
-                          <a href="/products">Browse Products</a>
+                          <Link href="/products">Browse Products</Link>
                         </Button>
                       </div>
                     </CardContent>

@@ -10,6 +10,7 @@ import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { useAppDispatch, useAppSelector } from "@/store"
 import { fetchFeaturedProducts } from "@/store/slices/productsSlice"
+import { type Product } from "@/lib/types"
 import { addToCart } from "@/store/slices/cartSlice"
 import { formatPrice } from "@/lib/utils"
 
@@ -21,7 +22,7 @@ export function FeaturedProducts() {
     dispatch(fetchFeaturedProducts())
   }, [dispatch])
 
-  const handleAddToCart = (product: any) => {
+  const handleAddToCart = (product: Product) => {
     dispatch(addToCart({ product, quantity: 1 }))
   }
 
@@ -64,7 +65,7 @@ export function FeaturedProducts() {
       </div>
 
       <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 mb-12">
-        {featuredProducts.map((product, index) => (
+        {featuredProducts.map((product: Product, index: number) => (
           <motion.div
             key={product.id}
             initial={{ opacity: 0, y: 50 }}

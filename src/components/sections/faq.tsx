@@ -66,7 +66,7 @@ const faqData: FAQItem[] = [
   {
     id: "9",
     question: "What if my medicine is out of stock?",
-    answer: "If a medicine is out of stock, we'll notify you immediately and provide an estimated restock date. We can also suggest alternative medicines with your doctor's approval or help you find the medicine at partner pharmacies.",
+    answer: "If a medicine is out of stock, we&apos;ll notify you immediately and provide an estimated restock date. We can also suggest alternative medicines with your doctor&apos;s approval or help you find the medicine at partner pharmacies.",
     category: "Stock"
   },
   {
@@ -112,7 +112,7 @@ export function FAQ() {
           </h2>
           <p className="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto">
             Find answers to common questions about our services, ordering process, 
-            and policies. Can't find what you're looking for? Contact our support team.
+            and policies. Can&apos;t find what you&apos;re looking for? Contact our support team.
           </p>
         </motion.div>
       </div>
