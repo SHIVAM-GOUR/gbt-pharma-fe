@@ -18,6 +18,10 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Badge } from "@/components/ui/badge"
+import { AddProductDialog } from "@/components/dialogs/add-product-dialog"
+import { EditProductDialog } from "@/components/dialogs/edit-product-dialog"
+import { ProductDetailDialog } from "@/components/dialogs/product-detail-dialog"
+import { DeleteConfirmationDialog } from "@/components/dialogs/delete-confirmation-dialog"
 import { formatPrice } from "@/lib/utils"
 
 // Mock data - in real app this would come from API
@@ -103,6 +107,14 @@ export default function ProductsPage() {
   const [selectedStatus, setSelectedStatus] = useState("All")
   const [showFilters, setShowFilters] = useState(false)
 
+  // Dialog states
+  const [showAddDialog, setShowAddDialog] = useState(false)
+  const [showEditDialog, setShowEditDialog] = useState(false)
+  const [showDetailDialog, setShowDetailDialog] = useState(false)
+  const [showDeleteDialog, setShowDeleteDialog] = useState(false)
+  const [selectedProduct, setSelectedProduct] = useState<any>(null)
+  const [isDeleting, setIsDeleting] = useState(false)
+
   const filteredProducts = products.filter(product => {
     const matchesSearch = product.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
                          product.sku.toLowerCase().includes(searchTerm.toLowerCase())
@@ -115,10 +127,47 @@ export default function ProductsPage() {
     return matchesSearch && matchesCategory && matchesStatus
   })
 
-  const handleDeleteProduct = (id: number) => {
-    if (confirm("Are you sure you want to delete this product?")) {
-      // Handle delete logic here
-      console.log("Deleting product:", id)
+  // Dialog handlers
+  const handleViewProduct = (product: any) => {
+    setSelectedProduct(product)
+    setShowDetailDialog(true)
+  }
+
+  const handleEditProduct = (product: any) => {
+    setSelectedProduct(product)
+    setShowEditDialog(true)
+  }
+
+  const handleDeleteProduct = (product: any) => {
+    setSelectedProduct(product)
+    setShowDeleteDialog(true)
+  }
+
+  const handleAddProduct = (productData: any) => {
+    // In real app, this would call an API
+    console.log("Adding product:", productData)
+    // Add to products array or refresh from API
+  }
+
+  const handleSaveProduct = (productData: any) => {
+    // In real app, this would call an API
+    console.log("Saving product:", productData)
+    // Update products array or refresh from API
+  }
+
+  const handleConfirmDelete = async (productId: number) => {
+    setIsDeleting(true)
+    try {
+      // In real app, this would call an API
+      await new Promise(resolve => setTimeout(resolve, 1000))
+      console.log("Deleting product:", productId)
+      // Remove from products array or refresh from API
+      setShowDeleteDialog(false)
+      setSelectedProduct(null)
+    } catch (error) {
+      console.error("Delete failed:", error)
+    } finally {
+      setIsDeleting(false)
     }
   }
 
@@ -136,11 +185,9 @@ export default function ProductsPage() {
           <h1 className="text-2xl font-bold text-gray-900">Products Management</h1>
           <p className="text-gray-600">Manage your pharmacy inventory and product catalog</p>
         </div>
-        <Button asChild>
-          <Link href="/admin/products/new">
-            <Plus className="w-4 h-4 mr-2" />
-            Add New Product
-          </Link>
+        <Button onClick={() => setShowAddDialog(true)}>
+          <Plus className="w-4 h-4 mr-2" />
+          Add New Product
         </Button>
       </div>
 
@@ -245,22 +292,18 @@ export default function ProductsPage() {
                         </div>
 
                         <div className="flex items-center space-x-2">
-                          <Button variant="outline" size="sm" asChild>
-                            <Link href={`/admin/products/${product.id}`}>
-                              <Eye className="w-4 h-4 mr-1" />
-                              View
-                            </Link>
+                          <Button variant="outline" size="sm" onClick={() => handleViewProduct(product)}>
+                            <Eye className="w-4 h-4 mr-1" />
+                            View
                           </Button>
-                          <Button variant="outline" size="sm" asChild>
-                            <Link href={`/admin/products/${product.id}/edit`}>
-                              <Edit className="w-4 h-4 mr-1" />
-                              Edit
-                            </Link>
+                          <Button variant="outline" size="sm" onClick={() => handleEditProduct(product)}>
+                            <Edit className="w-4 h-4 mr-1" />
+                            Edit
                           </Button>
                           <Button
                             variant="outline"
                             size="sm"
-                            onClick={() => handleDeleteProduct(product.id)}
+                            onClick={() => handleDeleteProduct(product)}
                             className="text-red-600 hover:text-red-700 hover:bg-red-50"
                           >
                             <Trash2 className="w-4 h-4 mr-1" />
@@ -344,6 +387,34 @@ export default function ProductsPage() {
           </CardContent>
         </Card>
       </div>
+
+      {/* Dialog Components */}
+      <AddProductDialog
+        open={showAddDialog}
+        onClose={() => setShowAddDialog(false)}
+        onAdd={handleAddProduct}
+      />
+
+      <EditProductDialog
+        open={showEditDialog}
+        onClose={() => setShowEditDialog(false)}
+        product={selectedProduct}
+        onSave={handleSaveProduct}
+      />
+
+      <ProductDetailDialog
+        open={showDetailDialog}
+        onClose={() => setShowDetailDialog(false)}
+        product={selectedProduct}
+      />
+
+      <DeleteConfirmationDialog
+        open={showDeleteDialog}
+        onClose={() => setShowDeleteDialog(false)}
+        product={selectedProduct}
+        onConfirm={handleConfirmDelete}
+        isDeleting={isDeleting}
+      />
     </div>
   )
 }

@@ -19,6 +19,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Badge } from "@/components/ui/badge"
+import { ContactForm } from "@/components/forms/contact-form"
 
 const contactMethods = [
   {
@@ -203,132 +204,20 @@ export default function ContactPage() {
 
       {/* Contact Form and Info */}
       <Section padding="xl" background="muted">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
+        >
+          <ContactForm />
+        </motion.div>
+      </Section>
+
+      {/* Additional Contact Info */}
+      <Section padding="xl">
         <div className="grid lg:grid-cols-3 gap-12">
-          {/* Contact Form */}
-          <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-            className="lg:col-span-2"
-          >
-            <Card>
-              <CardHeader>
-                <CardTitle className="text-2xl flex items-center">
-                  <Send className="w-6 h-6 text-primary mr-2" />
-                  Send us a Message
-                </CardTitle>
-                <p className="text-gray-600">
-                  Fill out the form below and we'll get back to you within 24 hours.
-                </p>
-              </CardHeader>
-              <CardContent>
-                <form onSubmit={handleSubmit} className="space-y-6">
-                  <div className="grid md:grid-cols-2 gap-6">
-                    <div>
-                      <label className="medical-form-label">First Name *</label>
-                      <Input
-                        value={formData.firstName}
-                        onChange={(e) => handleInputChange('firstName', e.target.value)}
-                        placeholder="Enter your first name"
-                        required
-                      />
-                    </div>
-                    <div>
-                      <label className="medical-form-label">Last Name *</label>
-                      <Input
-                        value={formData.lastName}
-                        onChange={(e) => handleInputChange('lastName', e.target.value)}
-                        placeholder="Enter your last name"
-                        required
-                      />
-                    </div>
-                  </div>
-
-                  <div className="grid md:grid-cols-2 gap-6">
-                    <div>
-                      <label className="medical-form-label">Email Address *</label>
-                      <Input
-                        type="email"
-                        value={formData.email}
-                        onChange={(e) => handleInputChange('email', e.target.value)}
-                        placeholder="Enter your email address"
-                        required
-                      />
-                    </div>
-                    <div>
-                      <label className="medical-form-label">Phone Number</label>
-                      <Input
-                        type="tel"
-                        value={formData.phone}
-                        onChange={(e) => handleInputChange('phone', e.target.value)}
-                        placeholder="Enter your phone number"
-                      />
-                    </div>
-                  </div>
-
-                  <div className="grid md:grid-cols-2 gap-6">
-                    <div>
-                      <label className="medical-form-label">Category *</label>
-                      <select
-                        value={formData.category}
-                        onChange={(e) => handleInputChange('category', e.target.value)}
-                        className="medical-form-input"
-                        required
-                      >
-                        <option value="">Select a category</option>
-                        <option value="general">General Inquiry</option>
-                        <option value="order">Order Support</option>
-                        <option value="prescription">Prescription Help</option>
-                        <option value="technical">Technical Support</option>
-                        <option value="complaint">Complaint</option>
-                        <option value="suggestion">Suggestion</option>
-                      </select>
-                    </div>
-                    <div>
-                      <label className="medical-form-label">Subject *</label>
-                      <Input
-                        value={formData.subject}
-                        onChange={(e) => handleInputChange('subject', e.target.value)}
-                        placeholder="Brief subject of your message"
-                        required
-                      />
-                    </div>
-                  </div>
-
-                  <div>
-                    <label className="medical-form-label">Message *</label>
-                    <textarea
-                      value={formData.message}
-                      onChange={(e) => handleInputChange('message', e.target.value)}
-                      rows={6}
-                      className="medical-form-input resize-none"
-                      placeholder="Please describe your inquiry in detail..."
-                      required
-                    />
-                  </div>
-
-                  <div className="flex items-center">
-                    <input
-                      type="checkbox"
-                      id="newsletter"
-                      checked={formData.newsletter}
-                      onChange={(e) => handleInputChange('newsletter', e.target.checked)}
-                      className="w-4 h-4 text-primary border-gray-300 rounded focus:ring-primary"
-                    />
-                    <label htmlFor="newsletter" className="ml-2 text-sm text-gray-600">
-                      Subscribe to our newsletter for health tips and updates
-                    </label>
-                  </div>
-
-                  <Button type="submit" size="lg" className="w-full group">
-                    Send Message
-                    <Send className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                  </Button>
-                </form>
-              </CardContent>
-            </Card>
-          </motion.div>
+          <div className="lg:col-span-2"></div>
 
           {/* Contact Information */}
           <motion.div

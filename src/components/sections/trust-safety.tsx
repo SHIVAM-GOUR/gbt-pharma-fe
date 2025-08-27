@@ -1,10 +1,12 @@
 "use client"
 
+import { useState } from "react"
 import { motion } from "framer-motion"
 import { Shield, Award, Clock, Truck, Phone, Lock, CheckCircle, Users } from "lucide-react"
 import { Section } from "@/components/ui/section"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
+import { CertificateDialog } from "@/components/dialogs/certificate-dialog"
 
 const trustFeatures = [
   {
@@ -65,15 +67,22 @@ const serviceFeatures = [
 ]
 
 const certifications = [
-  { name: "FDA Approved", badge: "FDA-2024-001" },
-  { name: "ISO 9001:2015", badge: "Quality Management" },
-  { name: "Licensed Pharmacy", badge: "PH-2024-001" },
-  { name: "HIPAA Compliant", badge: "Privacy Protected" },
-  { name: "SSL Secured", badge: "256-bit Encryption" },
-  { name: "PCI DSS", badge: "Payment Security" }
+  { name: "FDA Approved", badge: "FDA-2024-001", hasDialog: true },
+  { name: "ISO Certified", badge: "Quality Management", hasDialog: true },
+  { name: "Licensed Pharmacy", badge: "PH-2024-001", hasDialog: false },
+  { name: "HIPAA Compliant", badge: "Privacy Protected", hasDialog: true },
+  { name: "SSL Secured", badge: "256-bit Encryption", hasDialog: false },
+  { name: "PCI DSS", badge: "Payment Security", hasDialog: false }
 ]
 
 export function TrustSafety() {
+  const [selectedCertificate, setSelectedCertificate] = useState<string | null>(null)
+
+  const handleCertificateClick = (certName: string, hasDialog: boolean) => {
+    if (hasDialog) {
+      setSelectedCertificate(certName)
+    }
+  }
   return (
     <Section padding="xl" background="medical">
       <div className="text-center mb-16">
@@ -186,17 +195,23 @@ export function TrustSafety() {
               whileInView={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
               viewport={{ once: true }}
-              className="text-center"
+              className={`text-center ${cert.hasDialog ? 'cursor-pointer group' : ''}`}
+              onClick={() => handleCertificateClick(cert.name, cert.hasDialog)}
             >
-              <div className="w-16 h-16 bg-gradient-to-br from-primary/10 to-secondary/10 rounded-full flex items-center justify-center mx-auto mb-3">
-                <Shield className="w-8 h-8 text-primary" />
+              <div className={`w-16 h-16 bg-gradient-to-br from-primary/10 to-secondary/10 rounded-full flex items-center justify-center mx-auto mb-3 transition-all duration-300 ${cert.hasDialog ? 'group-hover:scale-110 group-hover:shadow-lg group-hover:from-primary/20 group-hover:to-secondary/20' : ''}`}>
+                <Shield className={`w-8 h-8 text-primary transition-colors ${cert.hasDialog ? 'group-hover:text-primary/80' : ''}`} />
               </div>
-              <h4 className="text-sm font-semibold text-gray-900 mb-1">
+              <h4 className={`text-sm font-semibold text-gray-900 mb-1 ${cert.hasDialog ? 'group-hover:text-primary' : ''}`}>
                 {cert.name}
               </h4>
               <p className="text-xs text-gray-500">
                 {cert.badge}
               </p>
+              {cert.hasDialog && (
+                <p className="text-xs text-primary mt-1 opacity-0 group-hover:opacity-100 transition-opacity">
+                  Click to view certificate
+                </p>
+              )}
             </motion.div>
           ))}
         </div>
@@ -223,6 +238,13 @@ export function TrustSafety() {
           </div>
         </div>
       </motion.div>
+
+      {/* Certificate Dialog */}
+      <CertificateDialog
+        open={selectedCertificate !== null}
+        onClose={() => setSelectedCertificate(null)}
+        certificateType={selectedCertificate || ""}
+      />
     </Section>
   )
 }

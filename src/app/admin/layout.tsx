@@ -16,7 +16,8 @@ import {
   Pill,
   BarChart3,
   FileText,
-  Bell
+  Bell,
+  MessageSquare
 } from "lucide-react"
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
@@ -42,6 +43,12 @@ const sidebarItems = [
     title: "Customers",
     href: "/admin/customers",
     icon: Users,
+  },
+  {
+    title: "Inquiries",
+    href: "/admin/inquiries",
+    icon: MessageSquare,
+    badge: 5
   },
   {
     title: "Analytics",
@@ -110,21 +117,28 @@ export default function AdminLayout({
             {sidebarItems.map((item) => {
               const Icon = item.icon
               const isActive = pathname === item.href
-              
+
               return (
                 <Link
                   key={item.href}
                   href={item.href}
                   className={cn(
-                    "flex items-center px-3 py-2 text-sm font-medium rounded-lg transition-colors",
+                    "flex items-center justify-between px-3 py-2 text-sm font-medium rounded-lg transition-colors",
                     isActive
                       ? "bg-primary text-white"
                       : "text-gray-700 hover:bg-gray-100"
                   )}
                   onClick={() => setSidebarOpen(false)}
                 >
-                  <Icon className="w-5 h-5 mr-3" />
-                  {item.title}
+                  <div className="flex items-center">
+                    <Icon className="w-5 h-5 mr-3" />
+                    {item.title}
+                  </div>
+                  {item.badge && (
+                    <Badge variant={isActive ? "secondary" : "destructive"} className="text-xs">
+                      {item.badge}
+                    </Badge>
+                  )}
                 </Link>
               )
             })}
