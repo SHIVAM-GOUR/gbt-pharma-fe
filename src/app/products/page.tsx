@@ -80,16 +80,24 @@ export default function ProductsPage() {
                   <CardContent className="p-6">
                     <div className="flex flex-col sm:flex-row gap-4 items-center justify-between">
                       {/* Search */}
+                    
                       <div className="relative flex-1 max-w-md">
-                        <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
-                        <Input
-                          type="text"
-                          placeholder="Search medicines..."
-                          value={searchQuery}
-                          onChange={(e) => handleSearch(e.target.value)}
-                          className="pl-10"
-                        />
-                      </div>
+
+  <span className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
+    <Search className="h-5 w-5 text-gray-400" />
+  </span>
+
+  <Input
+    type="text"
+    placeholder="Search medicines..."
+    value={searchQuery}
+    onChange={(e) => handleSearch(e.target.value)}
+  
+    className="w-full h-11 !pl-12 pr-3"
+    aria-label="Search medicines"
+  />
+</div>
+
 
                       {/* Controls */}
                       <div className="flex items-center gap-3">

@@ -225,7 +225,7 @@ export function ProductFilters({ onFilterChange }: ProductFiltersProps) {
       </Card>
 
       {/* Features Filter */}
-      <Card>
+      {/* <Card>
         <CardHeader className="pb-3">
           <button
             onClick={() => toggleSection('features')}
@@ -281,10 +281,10 @@ export function ProductFilters({ onFilterChange }: ProductFiltersProps) {
             </div>
           </CardContent>
         )}
-      </Card>
+      </Card> */}
 
       {/* Manufacturer Filter */}
-      <Card>
+      {/* <Card>
         <CardHeader className="pb-3">
           <button
             onClick={() => toggleSection('manufacturer')}
@@ -322,10 +322,10 @@ export function ProductFilters({ onFilterChange }: ProductFiltersProps) {
             </div>
           </CardContent>
         )}
-      </Card>
+      </Card> */}
 
       {/* Form Filter */}
-      <Card>
+      {/* <Card>
         <CardHeader className="pb-3">
           <button
             onClick={() => toggleSection('form')}
@@ -363,10 +363,10 @@ export function ProductFilters({ onFilterChange }: ProductFiltersProps) {
             </div>
           </CardContent>
         )}
-      </Card>
+      </Card> */}
 
       {/* Age Group Filter */}
-      <Card>
+      {/* <Card>
         <CardHeader className="pb-3">
           <button
             onClick={() => toggleSection('ageGroup')}
@@ -404,7 +404,7 @@ export function ProductFilters({ onFilterChange }: ProductFiltersProps) {
             </div>
           </CardContent>
         )}
-      </Card>
+      </Card> */}
     </div>
   )
 }

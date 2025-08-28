@@ -301,7 +301,7 @@ export default function ProductDetailPage() {
                     </Button>
                   </div>
                 </div>
-
+{/* 
                 <div className="flex space-x-4">
                   <Button
                     onClick={handleAddToCart}
@@ -320,7 +320,7 @@ export default function ProductDetailPage() {
                   >
                     <Heart className={`w-5 h-5 ${isInWishlist ? 'fill-current' : ''}`} />
                   </Button>
-                </div>
+                </div> */}
               </div>
 
               {/* Delivery Info */}
