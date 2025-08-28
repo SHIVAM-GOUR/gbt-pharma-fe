@@ -58,7 +58,7 @@ export function FeaturedProducts() {
             Featured <span className="text-primary">Medicines</span>
           </h2>
           <p className="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto">
-            Discover our most trusted and popular medicines, carefully selected 
+            Discover our most trusted and popular medicines, carefully selected
             for their quality, effectiveness, and safety.
           </p>
         </motion.div>
@@ -73,48 +73,49 @@ export function FeaturedProducts() {
             transition={{ duration: 0.6, delay: index * 0.1 }}
             viewport={{ once: true }}
           >
-            <Card className="group hover:shadow-xl transition-all duration-300 overflow-hidden">
-              {/* Product Image */}
-              <div className="relative aspect-square bg-gradient-to-br from-gray-50 to-gray-100 overflow-hidden">
-                <div className="w-full h-full flex items-center justify-center">
-                  <div className="text-center">
-                    <div className="w-20 h-20 bg-white rounded-full flex items-center justify-center mb-4 mx-auto shadow-md">
-                      <span className="text-2xl font-bold text-primary">Rx</span>
+            <Link href={`/products/${product.id}`}>
+              <Card className="group hover:shadow-xl transition-all duration-300 overflow-hidden">
+                {/* Product Image */}
+                <div className="relative aspect-square bg-gradient-to-br from-gray-50 to-gray-100 overflow-hidden">
+                  <div className="w-full h-full flex items-center justify-center">
+                    <div className="text-center">
+                      <div className="w-20 h-20 bg-white rounded-full flex items-center justify-center mb-4 mx-auto shadow-md">
+                        <span className="text-2xl font-bold text-primary">Rx</span>
+                      </div>
+                      <p className="text-gray-600 font-medium">{product.name}</p>
                     </div>
-                    <p className="text-gray-600 font-medium">{product.name}</p>
                   </div>
-                </div>
 
-                {/* Badges */}
-                <div className="absolute top-3 left-3 flex flex-col gap-2">
-                  {product.onSale && (
-                    <Badge variant="destructive" className="text-xs">
-                      Sale
-                    </Badge>
-                  )}
-                  {product.featured && (
-                    <Badge variant="warning" className="text-xs">
-                      Featured
-                    </Badge>
-                  )}
-                  {!product.prescriptionRequired && (
-                    <Badge variant="success" className="text-xs">
-                      OTC
-                    </Badge>
-                  )}
-                </div>
+                  {/* Badges */}
+                  <div className="absolute top-3 left-3 flex flex-col gap-2">
+                    {product.onSale && (
+                      <Badge variant="destructive" className="text-xs">
+                        Sale
+                      </Badge>
+                    )}
+                    {product.featured && (
+                      <Badge variant="warning" className="text-xs">
+                        Featured
+                      </Badge>
+                    )}
+                    {!product.prescriptionRequired && (
+                      <Badge variant="success" className="text-xs">
+                        OTC
+                      </Badge>
+                    )}
+                  </div>
 
-                {/* Wishlist Button */}
-                <Button
+                  {/* Wishlist Button */}
+                  {/* <Button
                   variant="ghost"
                   size="icon"
                   className="absolute top-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity bg-white/80 hover:bg-white"
                 >
                   <Heart className="w-4 h-4" />
-                </Button>
+                </Button> */}
 
-                {/* Quick Add to Cart */}
-                <div className="absolute inset-x-3 bottom-3 opacity-0 group-hover:opacity-100 transition-opacity">
+                  {/* Quick Add to Cart */}
+                  {/* <div className="absolute inset-x-3 bottom-3 opacity-0 group-hover:opacity-100 transition-opacity">
                   <Button
                     size="sm"
                     className="w-full"
@@ -123,76 +124,75 @@ export function FeaturedProducts() {
                     <ShoppingCart className="w-4 h-4 mr-2" />
                     Add to Cart
                   </Button>
-                </div>
-              </div>
-
-              <CardContent className="p-4">
-                {/* Product Info */}
-                <div className="mb-3">
-                  <h3 className="font-semibold text-gray-900 mb-1 line-clamp-2 group-hover:text-primary transition-colors">
-                    <Link href={`/products/${product.id}`}>
-                      {product.name}
-                    </Link>
-                  </h3>
-                  <p className="text-sm text-gray-600 mb-2">{product.manufacturer}</p>
-                  <p className="text-sm text-gray-500 line-clamp-2">{product.shortDescription}</p>
+                </div> */}
                 </div>
 
-                {/* Dosage & Form */}
-                <div className="flex items-center gap-2 mb-3">
-                  <Badge variant="outline" className="text-xs">
-                    {product.strength}
-                  </Badge>
-                  <Badge variant="outline" className="text-xs capitalize">
-                    {product.form}
-                  </Badge>
-                </div>
+                <CardContent className="p-4">
+                  {/* Product Info */}
+                  <div className="mb-3">
+                    <h3 className="font-semibold text-gray-900 mb-1 line-clamp-2 group-hover:text-primary transition-colors">
+                      {/* <Link href={`/products/${product.id}`}> */}
+                        {product.name}
+                      {/* </Link> */}
+                    </h3>
+                    <p className="text-sm text-gray-600 mb-2">{product.manufacturer}</p>
+                    <p className="text-sm text-gray-500 line-clamp-2">{product.shortDescription}</p>
+                  </div>
 
-                {/* Rating */}
-                <div className="flex items-center gap-2 mb-3">
+                  {/* Dosage & Form */}
+                  <div className="flex items-center gap-2 mb-3">
+                    <Badge variant="outline" className="text-xs">
+                      {product.strength}
+                    </Badge>
+                    <Badge variant="outline" className="text-xs capitalize">
+                      {product.form}
+                    </Badge>
+                  </div>
+
+                  {/* Rating */}
+                  {/* <div className="flex items-center gap-2 mb-3">
                   <div className="flex items-center">
                     {[...Array(5)].map((_, i) => (
                       <Star
                         key={i}
-                        className={`w-4 h-4 ${
-                          i < Math.floor(product.rating)
+                        className={`w-4 h-4 ${i < Math.floor(product.rating)
                             ? "text-yellow-400 fill-current"
                             : "text-gray-300"
-                        }`}
+                          }`}
                       />
                     ))}
                   </div>
                   <span className="text-sm text-gray-600">
                     {product.rating} ({product.reviewCount})
                   </span>
-                </div>
+                </div> */}
 
-                {/* Price */}
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center gap-2">
-                    <span className="text-lg font-bold text-gray-900">
-                      {formatPrice(product.price)}
-                    </span>
-                    {product.originalPrice && product.originalPrice > product.price && (
-                      <span className="text-sm text-gray-500 line-through">
-                        {formatPrice(product.originalPrice)}
+                  {/* Price */}
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center gap-2">
+                      <span className="text-lg font-bold text-gray-900">
+                        {formatPrice(product.price)}
                       </span>
+                      {product.originalPrice && product.originalPrice > product.price && (
+                        <span className="text-sm text-gray-500 line-through">
+                          {formatPrice(product.originalPrice)}
+                        </span>
+                      )}
+                    </div>
+
+                    {product.inStock ? (
+                      <Badge variant="success" className="text-xs">
+                        In Stock
+                      </Badge>
+                    ) : (
+                      <Badge variant="destructive" className="text-xs">
+                        Out of Stock
+                      </Badge>
                     )}
                   </div>
-                  
-                  {product.inStock ? (
-                    <Badge variant="success" className="text-xs">
-                      In Stock
-                    </Badge>
-                  ) : (
-                    <Badge variant="destructive" className="text-xs">
-                      Out of Stock
-                    </Badge>
-                  )}
-                </div>
 
-                {/* Prescription Required */}
-                {product.prescriptionRequired && (
+                  {/* Prescription Required */}
+                  {/* {product.prescriptionRequired && (
                   <div className="mt-3 p-2 bg-warning/10 border border-warning/20 rounded-lg">
                     <div className="flex items-center gap-2">
                       <Shield className="w-4 h-4 text-warning" />
@@ -201,9 +201,10 @@ export function FeaturedProducts() {
                       </span>
                     </div>
                   </div>
-                )}
-              </CardContent>
-            </Card>
+                )} */}
+                </CardContent>
+              </Card>
+            </Link>
           </motion.div>
         ))}
       </div>
@@ -217,7 +218,7 @@ export function FeaturedProducts() {
         className="text-center"
       >
         <Button size="lg" variant="outline" asChild className="group">
-          <Link href="/products">
+          <Link href="/products" className="flex">
             View All Medicines
             <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
           </Link>
