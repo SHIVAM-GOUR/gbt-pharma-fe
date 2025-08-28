@@ -26,7 +26,7 @@ const navigationItems = [
   { name: "Home", href: "/" },
   { name: "Products", href: "/products" },
   { name: "About Us", href: "/about" },
-  { name: "Blog", href: "/blog" },
+  // { name: "Blog", href: "/blog" },
   { name: "Contact", href: "/contact" },
 ]
 
@@ -67,10 +67,10 @@ export function Navigation() {
               </div>
             </div>
             <div className="flex items-center space-x-4">
-              <Link href="/track-order" className="hover:text-accent transition-colors">
+              {/* <Link href="/track-order" className="hover:text-accent transition-colors">
                 Track Order
-              </Link>
-              <Link href="/help" className="hover:text-accent transition-colors">
+              </Link> */}
+              <Link href="/contact" className="hover:text-accent transition-colors">
                 Help
               </Link>
             </div>
@@ -118,7 +118,7 @@ export function Navigation() {
             </div>
 
             {/* Search Bar */}
-            <div className="hidden md:flex flex-1 max-w-md mx-8">
+            {/* <div className="hidden md:flex flex-1 max-w-md mx-8">
               <div className="relative w-full">
                 <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-muted-foreground" />
                 <input
@@ -127,7 +127,7 @@ export function Navigation() {
                   className="w-full pl-10 pr-4 py-2 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
                 />
               </div>
-            </div>
+            </div> */}
 
             {/* Action Buttons */}
             <div className="flex items-center space-x-2">
@@ -146,7 +146,7 @@ export function Navigation() {
               )}
 
               {/* Cart */}
-              <Button 
+              {/* <Button 
                 variant="ghost" 
                 size="icon" 
                 onClick={() => dispatch(toggleCart())}
@@ -158,7 +158,7 @@ export function Navigation() {
                     {cartItemsCount}
                   </Badge>
                 )}
-              </Button>
+              </Button> */}
 
               {/* User Account */}
               <Button variant="ghost" size="icon" asChild>

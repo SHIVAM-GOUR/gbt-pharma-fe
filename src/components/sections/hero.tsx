@@ -32,7 +32,7 @@ export function Hero() {
       </div>
 
       <Container className="relative z-10">
-        <div className="grid lg:grid-cols-2 gap-12 items-center min-h-[80vh]">
+        <div className="grid lg:grid-cols-2 gap-24 items-center min-h-[80vh]">
           {/* Content */}
           <motion.div
             className="text-center lg:text-left"
@@ -81,7 +81,7 @@ export function Hero() {
             </motion.p>
 
             {/* Search Bar */}
-            <motion.div
+            {/* <motion.div
               className="mb-8"
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
@@ -101,7 +101,7 @@ export function Hero() {
                   <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
                 </Button>
               </div>
-            </motion.div>
+            </motion.div> */}
 
             {/* CTA Buttons */}
             <motion.div
@@ -113,8 +113,9 @@ export function Hero() {
               <Button size="xl" asChild className="group">
                 <Link href="/products">
                   Explore Medicines
-                  <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                 
                 </Link>
+                 <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </Button>
               
               <Button variant="outline" size="xl" asChild>
