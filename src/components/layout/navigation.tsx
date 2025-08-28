@@ -21,6 +21,9 @@ import { Badge } from "@/components/ui/badge"
 import { ShoppingCart as ShoppingCartComponent } from "@/components/cart/shopping-cart"
 import { useAppSelector, useAppDispatch } from "@/store"
 import { toggleCart } from "@/store/slices/cartSlice"
+import Image 
+from "next/image"
+import logo from "../../../public/logo.png"
 
 const navigationItems = [
   { name: "Home", href: "/" },
@@ -59,7 +62,7 @@ export function Navigation() {
             <div className="flex items-center space-x-6">
               <div className="flex items-center space-x-2">
                 <Phone className="w-4 h-4" />
-                <span>24/7 Support: +1-800-OLWEN-RX</span>
+                <span>24/7 Support: +91 9414081152</span>
               </div>
               <div className="hidden md:flex items-center space-x-2">
                 <Shield className="w-4 h-4" />
@@ -93,7 +96,7 @@ export function Navigation() {
         <Container>
           <nav className="flex items-center justify-between h-16 lg:h-20">
             {/* Logo */}
-            <Link href="/" className="flex items-center space-x-3">
+            {/* <Link href="/" className="flex items-center space-x-3">
               <div className="flex items-center justify-center w-10 h-10 bg-gradient-to-r from-primary to-secondary rounded-lg">
                 <Pill className="w-6 h-6 text-white" />
               </div>
@@ -101,7 +104,16 @@ export function Navigation() {
                 <span className="text-xl font-bold text-foreground font-heading">Olwen</span>
                 <span className="block text-sm text-accent font-medium">Lifesciences</span>
               </div>
-            </Link>
+            </Link> */}
+                         <Link href="/" className="flex items-center">
+      <div className="flex items-center justify-center w-20 md:w-30 h-20 md:h-30 rounded-lg overflow-hidden">
+        <Image
+          src={logo} 
+          alt="Olwen Lifesciences Logo"
+          className="object-contain"
+        />
+      </div>
+    </Link>
 
             {/* Desktop Navigation */}
             <div className="hidden lg:flex items-center space-x-8">
