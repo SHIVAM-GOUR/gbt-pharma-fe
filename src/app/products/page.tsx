@@ -49,7 +49,7 @@ export default function ProductsPage() {
                 Our <span className="text-primary">Medicines</span>
               </h1>
               <p className="text-lg text-gray-600 max-w-2xl">
-                Browse our comprehensive collection of quality medicines and healthcare products. 
+                Browse our comprehensive collection of quality medicines and healthcare products.
                 All products are FDA approved and sourced from trusted manufacturers.
               </p>
             </motion.div>
@@ -80,23 +80,23 @@ export default function ProductsPage() {
                   <CardContent className="p-6">
                     <div className="flex flex-col sm:flex-row gap-4 items-center justify-between">
                       {/* Search */}
-                    
+
                       <div className="relative flex-1 max-w-md">
 
-  <span className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
-    <Search className="h-5 w-5 text-gray-400" />
-  </span>
+                        <span className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
+                          <Search className="h-5 w-5 text-gray-400" />
+                        </span>
 
-  <Input
-    type="text"
-    placeholder="Search medicines..."
-    value={searchQuery}
-    onChange={(e) => handleSearch(e.target.value)}
-  
-    className="w-full h-11 !pl-12 pr-3"
-    aria-label="Search medicines"
-  />
-</div>
+                        <Input
+                          type="text"
+                          placeholder="Search medicines..."
+                          value={searchQuery}
+                          onChange={(e) => handleSearch(e.target.value)}
+
+                          className="w-full h-11 !pl-12 pr-3"
+                          aria-label="Search medicines"
+                        />
+                      </div>
 
 
                       {/* Controls */}
@@ -269,7 +269,7 @@ export default function ProductsPage() {
                     >
                       Previous
                     </Button>
-                    
+
                     {[...Array(pagination.totalPages)].map((_, i) => (
                       <Button
                         key={i + 1}
@@ -280,7 +280,7 @@ export default function ProductsPage() {
                         {i + 1}
                       </Button>
                     ))}
-                    
+
                     <Button
                       variant="outline"
                       disabled={pagination.page === pagination.totalPages}

@@ -202,7 +202,7 @@ export function ProductCard({ product, viewMode = 'grid' }: ProductCardProps) {
           </div>
 
           {/* Wishlist Button */}
-          <Button
+          {/* <Button
             variant="ghost"
             size="icon"
             onClick={handleWishlistToggle}
@@ -211,11 +211,11 @@ export function ProductCard({ product, viewMode = 'grid' }: ProductCardProps) {
             }`}
           >
             <Heart className={`w-4 h-4 ${isInWishlist ? 'fill-current' : ''}`} />
-          </Button>
+          </Button> */}
 
           {/* Quick Add to Cart */}
           <div className="absolute inset-x-3 bottom-3 opacity-0 group-hover:opacity-100 transition-opacity">
-            <Button
+            {/* <Button
               size="sm"
               onClick={handleAddToCart}
               disabled={!product.inStock}
@@ -223,7 +223,7 @@ export function ProductCard({ product, viewMode = 'grid' }: ProductCardProps) {
             >
               <ShoppingCart className="w-4 h-4 mr-2" />
               Add to Cart
-            </Button>
+            </Button> */}
           </div>
         </div>
 
@@ -274,7 +274,7 @@ export function ProductCard({ product, viewMode = 'grid' }: ProductCardProps) {
           </div>
 
           {/* Prescription Required */}
-          {product.prescriptionRequired && (
+          {/* {product.prescriptionRequired && (
             <div className="mt-3 p-2 bg-warning/10 border border-warning/20 rounded-lg">
               <div className="flex items-center gap-2">
                 <Shield className="w-4 h-4 text-warning" />
@@ -283,7 +283,7 @@ export function ProductCard({ product, viewMode = 'grid' }: ProductCardProps) {
                 </span>
               </div>
             </div>
-          )}
+          )} */}
         </CardContent>
       </Link>
     </Card>
